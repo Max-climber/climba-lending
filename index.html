@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#F4F3F6" />
+    <meta name="description" content="Climba — пролез, отметил, победил." />
+    <title>Climba — пролез, отметил, победил</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+  </head>
+  <body>
+    <header class="nav" aria-label="Навигация">
+      <div class="container nav__inner">
+        <a class="nav__logo" href="/" aria-label="Climba">
+          <img src="/assets/climba-logo.png" alt="Climba" />
+        </a>
+
+        <div class="nav__right">
+          <a class="downloadBtn" data-ios href="#ios" role="button" aria-label="Скачать IOS">
+            Скачать IOS
+          </a>
+          <a
+            class="downloadBtn"
+            data-android
+            href="#android"
+            role="button"
+            aria-label="Скачать Android"
+          >
+            Скачать Android
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero" aria-label="Главный экран">
+      <video
+        class="hero__video"
+        data-hero-video
+        muted
+        autoplay
+        loop
+        playsinline
+        preload="auto"
+        poster="/assets/climba-logo.png"
+      >
+        <source src="/assets/main-video-background.mp4" type="video/mp4" />
+      </video>
+
+      <h1 class="heroSlogan" aria-label="Пролез, отметил, победил">
+        Пролез, отметил, победил
+      </h1>
+    </section>
+
+    <main class="main">
+      <section class="container cards" aria-label="Возможности">
+        <div class="cards__grid">
+          <article class="card">
+            <h2 class="card__title">Заноси свои пролазы, используя 3Д КАРТУ скалодрома!</h2>
+
+            <details class="cardDetails">
+              <summary class="cardDetails__summary">Подробнее…</summary>
+              <div class="cardDetails__expanded">
+                <p class="cardDetails__text">
+                  С каждой новой накруткой сектора 3д карта обновляется. Выбирай нужные трассы и
+                  сразу заноси в логбук.
+                </p>
+              </div>
+            </details>
+
+            <img
+              class="cardPanda"
+              src="/assets/Сканер итоговый прозрачный фон.png"
+              alt="Панда со сканером"
+            />
+          </article>
+
+          <article class="card">
+            <h2 class="card__title">Тренируйся регулярно, сохраняй интенсивность и поднимайся выше по лигам.</h2>
+
+            <details class="cardDetails">
+              <summary class="cardDetails__summary">Подробнее…</summary>
+              <div class="cardDetails__expanded">
+                <p class="cardDetails__text">
+                  Лиги обновляются каждую неделю, поэтому важно не только набирать очки, но и
+                  сохранять ритм тренировок. Счётчик интенсивности показывает, сколько дней подряд ты
+                  продолжаешь свой путь, и помогает не выпадать из процесса, удерживаться в топе и
+                  двигаться в следующую лигу.
+                </p>
+              </div>
+            </details>
+
+            <img class="cardPanda" src="/assets/panda-streak2.4.png" alt="Панда интенсивности" />
+          </article>
+
+          <article class="card">
+            <h2 class="card__title">Получай квесты от приложения, выполняй их и открывай новые точки роста.</h2>
+
+            <details class="cardDetails">
+              <summary class="cardDetails__summary">Подробнее…</summary>
+              <div class="cardDetails__expanded">
+                <p class="cardDetails__text">
+                  Приложение автоматически предлагает квесты на основе твоей активности, чтобы
+                  тренировки оставались интересными и разнообразными. Они помогают ставить новые цели,
+                  замечать прогресс и сохранять мотивацию на пути вперёд.
+                </p>
+              </div>
+            </details>
+
+            <img class="cardPanda" src="/assets/panda-scanning.png" alt="Панда со сканером" />
+          </article>
+
+          <article class="card">
+            <h2 class="card__title">Анализируй свои тренировки, чтобы стать сильнее</h2>
+
+            <details class="cardDetails">
+              <summary class="cardDetails__summary">Подробнее…</summary>
+              <div class="cardDetails__expanded">
+                <p class="cardDetails__text">
+                  После каждой занесенной тренировки аналитика данных позволяет отследить прогресс и
+                  найти слабые стороны.
+                </p>
+              </div>
+            </details>
+
+            <img class="cardPanda" src="/assets/panda-analitics2.0.png" alt="Панда аналитики" />
+          </article>
+        </div>
+      </section>
+
+      <section class="container friends" aria-label="Друзья">
+        <h2 class="friends__title">Находи или приглашай друзей в climba, чтобы тренировки стали еще интереснее!</h2>
+        <img class="friends__img" src="/assets/iphone-block2.0.png" alt="Друзья" loading="lazy" />
+
+        <div class="friends__buttons">
+          <a class="downloadBtn downloadBtn--lg friendsBtn" data-ios href="#ios" role="button" aria-label="Скачать IOS">
+            Скачать IOS
+          </a>
+          <a
+            class="downloadBtn downloadBtn--lg friendsBtn"
+            data-android
+            href="#android"
+            role="button"
+            aria-label="Скачать Android"
+          >
+            Скачать Android
+          </a>
+        </div>
+      </section>
+
+      <footer class="container footer" aria-label="Контакты">
+        <div class="footer__row">
+          <div class="footer__left">
+            <img class="footer__logo" src="/assets/climba-logo.png" alt="Climba" />
+          </div>
+
+          <div class="footer__right">
+            <div class="footer__socialRow">
+              <a class="footer__tg" href="https://t.me/climba1">
+                <span class="footer__tgText">Присоединяйтесь к нам в Telegram</span>
+              </a>
+              <a class="footer__tgIcon" href="https://t.me/climba1" aria-label="Telegram @climba1">
+                <svg
+                  class="footer__socialIcon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="11"
+                    fill="white"
+                    stroke="rgba(0,0,0,0.1)"
+                    stroke-width="0.5"
+                  />
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.13-.31-1.09-.66.02-.18.27-.37.74-.56 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"
+                    fill="#0088cc"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <a class="footer__email" href="mailto:support@climba.ru">support@climba.ru</a>
+          </div>
+        </div>
+
+        <p class="footer__copy">© Climba, 2026. Все права защищены.</p>
+      </footer>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
+
