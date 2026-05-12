@@ -4,6 +4,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
+        deleteAccount: "delete-account/index.html",
         main: "index.html",
         privacy: "privacy/index.html",
         privacyRu: "privacy.ru/index.html",
