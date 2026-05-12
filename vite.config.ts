@@ -6,6 +6,7 @@ export default defineConfig({
       input: {
         main: "index.html",
         privacy: "privacy/index.html",
+        privacyRu: "privacy.ru/index.html",
       },
     },
   },
