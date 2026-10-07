@@ -1,11 +1,60 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-ym-counter="111839110">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function () {
+        var path = location.pathname;
+        if ((path === "/" || path === "") && !location.search) {
+          location.replace("/qr/");
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#F4F3F6" />
     <meta name="description" content="Climba — пролез, отметил, победил." />
     <title>Climba — пролез, отметил, победил</title>
+    <!--
+      Метрика:
+      - data-ym-counter — общий трафик climba.ru (111839110)
+      QR-наклейка: https://climba.ru/ → /qr/ → счётчик 111839566 → лендинг
+      Цели кнопок (111839110): download_ios, download_android
+    -->
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+      ym(111839110, "init", {
+        clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true
+      });
+    </script>
+    <script>
+      window.climbaDownloadClick = function (platform, el) {
+        var goal = platform === "ios" ? "download_ios" : "download_android";
+        if (typeof ym === "function") ym(111839110, "reachGoal", goal);
+        var href = el.getAttribute("href") || "";
+        if (/^https?:\/\//i.test(href)) {
+          window.open(href, el.target || "_blank", "noopener,noreferrer");
+        }
+        return false;
+      };
+
+      document.addEventListener(
+        "click",
+        function (e) {
+          var t = e.target;
+          if (!t || !t.closest) return;
+          var link = t.closest("[data-ios], [data-android]");
+          if (!link) return;
+          e.preventDefault();
+          var platform = link.hasAttribute("data-ios") ? "ios" : "android";
+          window.climbaDownloadClick(platform, link);
+        },
+        true,
+      );
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,15 +72,27 @@
         </a>
 
         <div class="nav__right">
-          <a class="downloadBtn" data-ios href="#ios" role="button" aria-label="Скачать IOS">
+          <a
+            class="downloadBtn"
+            data-ios
+            href="https://testflight.apple.com/join/A68dV3mY"
+            target="_blank"
+            rel="noopener noreferrer"
+            role="button"
+            aria-label="Скачать IOS"
+            onclick="return climbaDownloadClick('ios', this)"
+          >
             Скачать IOS
           </a>
           <a
             class="downloadBtn"
             data-android
-            href="#android"
+            href="https://play.google.com/store/apps/details?id=com.redizit.climba"
+            target="_blank"
+            rel="noopener noreferrer"
             role="button"
             aria-label="Скачать Android"
+            onclick="return climbaDownloadClick('android', this)"
           >
             Скачать Android
           </a>
@@ -47,8 +108,13 @@
         autoplay
         loop
         playsinline
-        preload="auto"
-        poster="/assets/climba-logo.png"
+        webkit-playsinline
+        disablepictureinpicture
+        disableremoteplayback
+        preload="metadata"
+        poster="/assets/hero-poster.jpg"
+        tabindex="-1"
+        aria-hidden="true"
       >
         <source src="/assets/main-video-background.mp4" type="video/mp4" />
       </video>
@@ -227,15 +293,27 @@
         <img class="friends__img" src="/assets/image.png" alt="Друзья" loading="lazy" />
 
         <div class="friends__buttons">
-          <a class="downloadBtn downloadBtn--lg friendsBtn" data-ios href="#ios" role="button" aria-label="Скачать IOS">
+          <a
+            class="downloadBtn downloadBtn--lg friendsBtn"
+            data-ios
+            href="https://testflight.apple.com/join/A68dV3mY"
+            target="_blank"
+            rel="noopener noreferrer"
+            role="button"
+            aria-label="Скачать IOS"
+            onclick="return climbaDownloadClick('ios', this)"
+          >
             Скачать IOS
           </a>
           <a
             class="downloadBtn downloadBtn--lg friendsBtn"
             data-android
-            href="#android"
+            href="https://play.google.com/store/apps/details?id=com.redizit.climba"
+            target="_blank"
+            rel="noopener noreferrer"
             role="button"
             aria-label="Скачать Android"
+            onclick="return climbaDownloadClick('android', this)"
           >
             Скачать Android
           </a>
@@ -290,6 +368,9 @@
       </footer>
     </main>
     <script type="module" src="/src/main.ts"></script>
+    <noscript
+      ><div><img src="https://mc.yandex.ru/watch/111839110" style="position:absolute; left:-9999px" alt="" /></div
+    ></noscript>
   </body>
 </html>
 

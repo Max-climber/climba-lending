@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   build: {
+    assetsDir: "bundled",
     rollupOptions: {
       input: {
         deleteAccount: "delete-account/index.html",
