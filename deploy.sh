@@ -17,7 +17,8 @@ CI=true npm run build
 eval "${RSYNC} dist/bundled/ maksim@${HOST}:${REMOTE}/dist/bundled/"
 eval "${RSYNC} dist/qr/ maksim@${HOST}:${REMOTE}/dist/qr/"
 eval "${RSYNC} dist/index.html maksim@${HOST}:${REMOTE}/dist/index.html"
-eval "${RSYNC} dist/assets/main-video-background.mp4 maksim@${HOST}:${REMOTE}/dist/assets/"
-eval "${RSYNC} dist/assets/hero-poster.jpg maksim@${HOST}:${REMOTE}/dist/assets/"
+${SSH} "mkdir -p ${REMOTE}/dist/media"
+eval "${RSYNC} assets/main-video-background.mp4 assets/hero-poster.jpg maksim@${HOST}:${REMOTE}/dist/media/"
+eval "${RSYNC} dist/assets/panda-scanning.png maksim@${HOST}:${REMOTE}/dist/assets/"
 
 echo "Deployed to https://climba.ru/"
