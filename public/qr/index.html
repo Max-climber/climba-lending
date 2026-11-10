@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Climba — QR</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Yandex.Metrika counter: Climba QR (111839566) -->
+    <script type="text/javascript">
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) {
+            return;
+          }
+        }
+        k = e.createElement(t);
+        a = e.getElementsByTagName(t)[0];
+        k.async = 1;
+        k.src = r;
+        a.parentNode.insertBefore(k, a);
+      })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=111839566", "ym");
+
+      new Image().src = "https://mc.yandex.ru/watch/111839566?ut=noindex&rn=" + Date.now();
+
+      var tries = 0;
+      (function trackAndGo() {
+        if (typeof ym !== "function") {
+          if (tries++ < 60) {
+            setTimeout(trackAndGo, 50);
+          } else {
+            location.replace("/?utm_source=gym&utm_medium=qr&utm_campaign=panda_stand");
+          }
+          return;
+        }
+
+        ym(111839566, "init", {
+          clickmap: true,
+          trackLinks: true,
+          accurateTrackBounce: true,
+          webvisor: true,
+        });
+        // Цель считается КАЖДЫЙ раз (визиты в Метрике группируются по сессии ~30 мин)
+        ym(111839566, "reachGoal", "qr_scan");
+
+        setTimeout(function () {
+          location.replace("/?utm_source=gym&utm_medium=qr&utm_campaign=panda_stand");
+        }, 600);
+      })();
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0;url=/?utm_source=gym&utm_medium=qr&utm_campaign=panda_stand" />
+      <div><img src="https://mc.yandex.ru/watch/111839566" style="position: absolute; left: -9999px" alt="" /></div>
+    </noscript>
+  </head>
+  <body>
+    <p style="font-family: system-ui, sans-serif; text-align: center; margin-top: 40vh">Загрузка Climba…</p>
+  </body>
+</html>

@@ -14,6 +14,11 @@
     <meta name="theme-color" content="#F4F3F6" />
     <meta name="description" content="Climba — пролез, отметил, победил." />
     <title>Climba — пролез, отметил, победил</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <!--
       Метрика:
       - data-ym-counter — общий трафик climba.ru (111839110)
@@ -35,8 +40,9 @@
         var goal = platform === "ios" ? "download_ios" : "download_android";
         if (typeof ym === "function") ym(111839110, "reachGoal", goal);
         var href = el.getAttribute("href") || "";
-        if (/^https?:\/\//i.test(href)) {
-          window.open(href, el.target || "_blank", "noopener,noreferrer");
+        // Только https — блокируем javascript:/data:/http:
+        if (/^https:\/\//i.test(href)) {
+          window.open(href, "_blank", "noopener,noreferrer");
         }
         return false;
       };
@@ -68,14 +74,17 @@
     <header class="nav" aria-label="Навигация">
       <div class="container nav__inner">
         <a class="nav__logo" href="/" aria-label="Climba">
-          <img src="/assets/climba-logo.png" alt="Climba" />
+          <picture>
+            <source srcset="/media/climba-logo.webp" type="image/webp" />
+            <img src="/assets/climba-logo.png" alt="Climba" width="611" height="197" decoding="async" />
+          </picture>
         </a>
 
         <div class="nav__right">
           <a
             class="downloadBtn"
             data-ios
-            href="https://testflight.apple.com/join/A68dV3mY"
+            href="https://apps.apple.com/ru/app/climba/id6763004800"
             target="_blank"
             rel="noopener noreferrer"
             role="button"
@@ -100,6 +109,7 @@
       </div>
     </header>
 
+    <!-- hero: only video (slogan is baked into mp4; no HTML/CSS text overlay) -->
     <section class="hero" aria-label="Главный экран">
       <video
         class="hero__video"
@@ -112,19 +122,16 @@
         disablepictureinpicture
         disableremoteplayback
         preload="metadata"
-        poster="/media/hero-poster.jpg"
+        poster="/media/hero-poster.webp"
         tabindex="-1"
         aria-hidden="true"
       >
         <source src="/media/main-video-background.mp4" type="video/mp4" />
       </video>
-
-      <h1 class="heroSlogan" aria-label="Пролез, отметил, победил">
-        Пролез, отметил, победил
-      </h1>
     </section>
 
     <main class="main">
+      <h1 class="sr-only">Climba — пролез, отметил, победил</h1>
       <section class="container cards" aria-label="Возможности">
         <div class="cards__grid">
           <article class="card">
@@ -162,11 +169,18 @@
               </div>
             </details>
 
-            <img
-              class="cardPanda"
-              src="/media/panda-3d-scan.webp"
-              alt="3D карта скалодрома в приложении"
-            />
+            <picture>
+              <source srcset="/media/panda-3d-map.webp" type="image/webp" />
+              <img
+                class="cardPanda"
+                src="/media/panda-3d-map.png"
+                alt="3D карта скалодрома в приложении"
+                width="640"
+                height="640"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </article>
 
           <article class="card">
@@ -206,7 +220,18 @@
               </div>
             </details>
 
-            <img class="cardPanda" src="/assets/panda-streak2.4.png" alt="Панда интенсивности" />
+            <picture>
+              <source srcset="/media/panda-streak2.4.webp" type="image/webp" />
+              <img
+                class="cardPanda"
+                src="/assets/panda-streak2.4.png"
+                alt="Панда интенсивности"
+                width="537"
+                height="640"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </article>
 
           <article class="card">
@@ -245,7 +270,18 @@
               </div>
             </details>
 
-            <img class="cardPanda" src="/assets/panda-scanning.png" alt="Панда со сканером" />
+            <picture>
+              <source srcset="/media/panda-scanning.webp" type="image/webp" />
+              <img
+                class="cardPanda"
+                src="/assets/panda-scanning.png"
+                alt="Панда со сканером"
+                width="537"
+                height="640"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </article>
 
           <article class="card">
@@ -283,20 +319,42 @@
               </div>
             </details>
 
-            <img class="cardPanda" src="/assets/panda-analitics2.0.png" alt="Панда аналитики" />
+            <picture>
+              <source srcset="/media/panda-analitics2.0.webp" type="image/webp" />
+              <img
+                class="cardPanda"
+                src="/assets/panda-analitics2.0.png"
+                alt="Панда аналитики"
+                width="537"
+                height="640"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </article>
         </div>
       </section>
 
       <section class="container friends" aria-label="Друзья">
         <h2 class="friends__title">Находи или приглашай друзей в climba, чтобы тренировки стали еще интереснее!</h2>
-        <img class="friends__img" src="/assets/image.png" alt="Друзья" loading="lazy" />
+        <picture>
+          <source srcset="/media/friends.webp" type="image/webp" />
+          <img
+            class="friends__img"
+            src="/media/friends.png"
+            alt="Приложение Climba на iPhone"
+            width="480"
+            height="973"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
 
         <div class="friends__buttons">
           <a
             class="downloadBtn downloadBtn--lg friendsBtn"
             data-ios
-            href="https://testflight.apple.com/join/A68dV3mY"
+            href="https://apps.apple.com/ru/app/climba/id6763004800"
             target="_blank"
             rel="noopener noreferrer"
             role="button"
@@ -323,7 +381,10 @@
       <footer class="container footer" aria-label="Контакты">
         <div class="footer__row">
           <div class="footer__left">
-            <img class="footer__logo" src="/assets/climba-logo.png" alt="Climba" />
+            <picture>
+              <source srcset="/media/climba-logo.webp" type="image/webp" />
+              <img class="footer__logo" src="/assets/climba-logo.png" alt="Climba" width="611" height="197" decoding="async" />
+            </picture>
           </div>
 
           <div class="footer__right">

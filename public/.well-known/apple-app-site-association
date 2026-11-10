@@ -1,0 +1,22 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["KPFH462529.com.redizit.climba"],
+        "components": [
+          {
+            "/": "/open/*",
+            "comment": "Deep links into app only"
+          },
+          {
+            "/": "/app/*",
+            "comment": "Deep links into app only"
+          }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["KPFH462529.com.redizit.climba"]
+  }
+}

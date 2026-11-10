@@ -2,3 +2,21 @@ node_modules/
 dist/
 .DS_Store
 .cursor/
+
+# scratch / generated
+.chart-data-*/
+.investor-build/
+/output/
+animation/output/
+animation/intro/output/
+**/__pycache__/
+
+# coursework and office junk
+~$*
+*.docx
+*.pptx
+
+# unused oversized local media
+assets/output (1).mp4
+panda_scanning.jpg
+
