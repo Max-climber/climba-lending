@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Быстрый деплой climba.ru
+# Ручной деплой climba.ru С ЛОКАЛЬНОЙ МАШИНЫ (rsync по SSH).
+# На VPS из CI запускается scripts/server-deploy.sh, а не этот файл.
 #   ./deploy.sh           — build + JS/CSS/HTML/favicon (без тяжёлого media)
 #   ./deploy.sh --media   — то же + картинки/видео в /media/
 #   ./deploy.sh --install — ещё и npm install
@@ -102,7 +103,7 @@ cleanup() { close_mux; }
 trap cleanup EXIT
 
 if (( DO_BUILD )); then
-  git pull || true
+  git pull --ff-only
   if (( DO_INSTALL )) || [[ ! -d node_modules ]]; then
     CI=true npm install
   fi
@@ -112,37 +113,14 @@ fi
 echo "Opening SSH (one connection)..."
 open_mux
 
-rsync_code dist/bundled/ "${USER}@${HOST}:${REMOTE}/dist/bundled/"
-rsync_code dist/qr/ "${USER}@${HOST}:${REMOTE}/dist/qr/"
-rsync_code dist/index.html "${USER}@${HOST}:${REMOTE}/dist/index.html"
-
-rsync_code \
-  dist/favicon.ico \
-  dist/favicon-16x16.png \
-  dist/favicon-32x32.png \
-  dist/apple-touch-icon.png \
-  dist/android-chrome-192x192.png \
-  dist/android-chrome-512x512.png \
-  dist/site.webmanifest \
-  "${USER}@${HOST}:${REMOTE}/dist/"
-
-ssh_retry "chmod 644 ${REMOTE}/dist/favicon.ico ${REMOTE}/dist/favicon-*.png ${REMOTE}/dist/apple-touch-icon.png ${REMOTE}/dist/android-chrome-*.png ${REMOTE}/dist/site.webmanifest"
-
+# Весь dist, кроме тяжёлого media (оно ниже, по флагу). Так в прод не забываются
+# новые файлы (например qr-redirect.js) — раньше список был ручным.
+rsync_code --exclude 'media/' dist/ "${USER}@${HOST}:${REMOTE}/dist/"
+ssh_retry "find ${REMOTE}/dist -path ${REMOTE}/dist/media -prune -o -type f -exec chmod 644 {} +"
 if (( DO_MEDIA )); then
   ssh_retry "mkdir -p ${REMOTE}/dist/media"
-  rsync_media \
-    assets/main-video-background.mp4 \
-    assets/hero-poster.jpg \
-    assets/hero-poster.webp \
-    assets/climba-logo.webp \
-    assets/climba-logo.png \
-    assets/panda-3d-map.png \
-    assets/panda-3d-map.webp \
-    assets/panda-streak2.4.webp \
-    assets/panda-scanning.webp \
-    assets/panda-analitics2.0.webp \
-    assets/friends.webp \
-    assets/friends.png \
+  # -L: public/media — симлинки на assets/, заливаем сами файлы
+  rsync_media -L public/media/ \
     "${USER}@${HOST}:${REMOTE}/dist/media/"
   ssh_retry "chmod 755 ${REMOTE}/dist/media && chmod 644 ${REMOTE}/dist/media/*"
   echo "Media synced."

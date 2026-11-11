@@ -1,19 +1,36 @@
-name: Execture deploy.sh on VPS
+name: Deploy landing to VPS
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+  workflow_dispatch:
+
+# Токену GITHUB_TOKEN ничего не нужно — деплой идёт по SSH
+permissions: {}
+
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - name: Execture deploy.sh on VPS
-        uses: appleboy/ssh-action@master
+      - name: Build & swap dist on VPS
+        # Пин на коммит (v1.2.5), а не @master: защита от подмены экшена (supply chain)
+        uses: appleboy/ssh-action@0ff4204d59e8e51228ff73bce53f80d53301dee2
         with:
           host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT || '22' }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # Необязательно, но защищает от MITM: ssh-keygen -lf <(ssh-keyscan -p 2244 HOST) → SHA256:...
+          fingerprint: ${{ secrets.SSH_HOST_FINGERPRINT }}
           script: |
+            set -euo pipefail
             cd /home/maksim/climba/climba-lending
-            ./deploy.sh
+            git fetch --quiet origin main
+            # без «|| true»: разошедшаяся ветка на сервере = явная ошибка, а не тихий старый код
+            git merge --ff-only origin/main
+            ./scripts/server-deploy.sh

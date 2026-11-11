@@ -1,74 +1,29 @@
 <!doctype html>
 <html lang="ru" data-ym-counter="111839110">
   <head>
+    <!-- QR-наклейка: https://climba.ru/ → /qr/ (счётчик 111839566) → лендинг. Должен идти первым и синхронно. -->
+    <script src="/qr-redirect.js"></script>
     <meta charset="UTF-8" />
-    <script>
-      (function () {
-        var path = location.pathname;
-        if ((path === "/" || path === "") && !location.search) {
-          location.replace("/qr/");
-        }
-      })();
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#F4F3F6" />
-    <meta name="description" content="Climba — пролез, отметил, победил." />
+    <meta name="description" content="Climba — пролез, отметил, победил. 3D-карта скалодрома, логбук, лиги, квесты и аналитика тренировок." />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Climba — пролез, отметил, победил</title>
+    <link rel="canonical" href="https://climba.ru/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Climba" />
+    <meta property="og:title" content="Climba — пролез, отметил, победил" />
+    <meta property="og:description" content="3D-карта скалодрома, логбук, лиги, квесты и аналитика тренировок." />
+    <meta property="og:url" content="https://climba.ru/" />
+    <meta property="og:image" content="https://climba.ru/media/hero-poster.jpg" />
+    <meta property="og:locale" content="ru_RU" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <!--
-      Метрика:
-      - data-ym-counter — общий трафик climba.ru (111839110)
-      QR-наклейка: https://climba.ru/ → /qr/ → счётчик 111839566 → лендинг
-      Цели кнопок (111839110): download_ios, download_android
-    -->
-    <script type="text/javascript">
-      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-      m[i].l=1*new Date();
-      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-      ym(111839110, "init", {
-        clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true
-      });
-    </script>
-    <script>
-      window.climbaDownloadClick = function (platform, el) {
-        var goal = platform === "ios" ? "download_ios" : "download_android";
-        if (typeof ym === "function") ym(111839110, "reachGoal", goal);
-        var href = el.getAttribute("href") || "";
-        // Только https — блокируем javascript:/data:/http:
-        if (/^https:\/\//i.test(href)) {
-          window.open(href, "_blank", "noopener,noreferrer");
-        }
-        return false;
-      };
-
-      document.addEventListener(
-        "click",
-        function (e) {
-          var t = e.target;
-          if (!t || !t.closest) return;
-          var link = t.closest("[data-ios], [data-android]");
-          if (!link) return;
-          e.preventDefault();
-          var platform = link.hasAttribute("data-ios") ? "ios" : "android";
-          window.climbaDownloadClick(platform, link);
-        },
-        true,
-      );
-    </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-
+    <link rel="preload" as="image" href="/media/hero-poster.webp" type="image/webp" fetchpriority="high" />
+    <!-- Метрика (111839110) и цели download_ios / download_android — в src/analytics.ts -->
   </head>
   <body>
     <header class="nav" aria-label="Навигация">
@@ -76,7 +31,7 @@
         <a class="nav__logo" href="/" aria-label="Climba">
           <picture>
             <source srcset="/media/climba-logo.webp" type="image/webp" />
-            <img src="/assets/climba-logo.png" alt="Climba" width="611" height="197" decoding="async" />
+            <img src="/media/climba-logo.png" alt="Climba" width="611" height="197" decoding="async" />
           </picture>
         </a>
 
@@ -87,11 +42,8 @@
             href="https://apps.apple.com/ru/app/climba/id6763004800"
             target="_blank"
             rel="noopener noreferrer"
-            role="button"
-            aria-label="Скачать IOS"
-            onclick="return climbaDownloadClick('ios', this)"
           >
-            Скачать IOS
+            Скачать iOS
           </a>
           <a
             class="downloadBtn"
@@ -99,9 +51,6 @@
             href="https://play.google.com/store/apps/details?id=com.redizit.climba"
             target="_blank"
             rel="noopener noreferrer"
-            role="button"
-            aria-label="Скачать Android"
-            onclick="return climbaDownloadClick('android', this)"
           >
             Скачать Android
           </a>
@@ -113,9 +62,10 @@
     <section class="hero" aria-label="Главный экран">
       <video
         class="hero__video"
+        width="1280"
+        height="720"
         data-hero-video
         muted
-        autoplay
         loop
         playsinline
         webkit-playsinline
@@ -143,7 +93,6 @@
                 <span class="cardDetails__collapse">
                   <span class="sr-only">Свернуть описание</span>
                   <svg
-                    class="cardDetails__arrow"
                     xmlns="http://www.w3.org/2000/svg"
                     width="18"
                     height="18"
@@ -192,7 +141,6 @@
                 <span class="cardDetails__collapse">
                   <span class="sr-only">Свернуть описание</span>
                   <svg
-                    class="cardDetails__arrow"
                     xmlns="http://www.w3.org/2000/svg"
                     width="18"
                     height="18"
@@ -224,7 +172,7 @@
               <source srcset="/media/panda-streak2.4.webp" type="image/webp" />
               <img
                 class="cardPanda"
-                src="/assets/panda-streak2.4.png"
+                src="/media/panda-streak2.4.png"
                 alt="Панда интенсивности"
                 width="537"
                 height="640"
@@ -243,7 +191,6 @@
                 <span class="cardDetails__collapse">
                   <span class="sr-only">Свернуть описание</span>
                   <svg
-                    class="cardDetails__arrow"
                     xmlns="http://www.w3.org/2000/svg"
                     width="18"
                     height="18"
@@ -274,7 +221,7 @@
               <source srcset="/media/panda-scanning.webp" type="image/webp" />
               <img
                 class="cardPanda"
-                src="/assets/panda-scanning.png"
+                src="/media/panda-scanning.png"
                 alt="Панда со сканером"
                 width="537"
                 height="640"
@@ -293,7 +240,6 @@
                 <span class="cardDetails__collapse">
                   <span class="sr-only">Свернуть описание</span>
                   <svg
-                    class="cardDetails__arrow"
                     xmlns="http://www.w3.org/2000/svg"
                     width="18"
                     height="18"
@@ -323,7 +269,7 @@
               <source srcset="/media/panda-analitics2.0.webp" type="image/webp" />
               <img
                 class="cardPanda"
-                src="/assets/panda-analitics2.0.png"
+                src="/media/panda-analitics2.0.png"
                 alt="Панда аналитики"
                 width="537"
                 height="640"
@@ -352,47 +298,41 @@
 
         <div class="friends__buttons">
           <a
-            class="downloadBtn downloadBtn--lg friendsBtn"
+            class="downloadBtn friendsBtn"
             data-ios
             href="https://apps.apple.com/ru/app/climba/id6763004800"
             target="_blank"
             rel="noopener noreferrer"
-            role="button"
-            aria-label="Скачать IOS"
-            onclick="return climbaDownloadClick('ios', this)"
           >
-            Скачать IOS
+            Скачать iOS
           </a>
           <a
-            class="downloadBtn downloadBtn--lg friendsBtn"
+            class="downloadBtn friendsBtn"
             data-android
             href="https://play.google.com/store/apps/details?id=com.redizit.climba"
             target="_blank"
             rel="noopener noreferrer"
-            role="button"
-            aria-label="Скачать Android"
-            onclick="return climbaDownloadClick('android', this)"
           >
             Скачать Android
           </a>
         </div>
       </section>
 
-      <footer class="container footer" aria-label="Контакты">
+      <footer class="container footer">
         <div class="footer__row">
           <div class="footer__left">
             <picture>
               <source srcset="/media/climba-logo.webp" type="image/webp" />
-              <img class="footer__logo" src="/assets/climba-logo.png" alt="Climba" width="611" height="197" decoding="async" />
+              <img class="footer__logo" src="/media/climba-logo.png" alt="Climba" width="611" height="197" decoding="async" />
             </picture>
           </div>
 
           <div class="footer__right">
             <div class="footer__socialRow">
-              <a class="footer__tg" href="https://t.me/climba1">
+              <a class="footer__tg" href="https://t.me/climba1" target="_blank" rel="noopener noreferrer">
                 <span class="footer__tgText">Присоединяйтесь к нам в Telegram</span>
               </a>
-              <a class="footer__tgIcon" href="https://t.me/climba1" aria-label="Telegram @climba1">
+              <a class="footer__tgIcon" href="https://t.me/climba1" target="_blank" rel="noopener noreferrer" aria-label="Telegram @climba1">
                 <svg
                   class="footer__socialIcon"
                   viewBox="0 0 24 24"
@@ -429,9 +369,6 @@
       </footer>
     </main>
     <script type="module" src="/src/main.ts"></script>
-    <noscript
-      ><div><img src="https://mc.yandex.ru/watch/111839110" style="position:absolute; left:-9999px" alt="" /></div
-    ></noscript>
+    <noscript><img src="https://mc.yandex.ru/watch/111839110" width="1" height="1" alt="" hidden /></noscript>
   </body>
 </html>
-

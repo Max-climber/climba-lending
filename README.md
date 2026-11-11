@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Сборка: `npm run build` → `dist/` (`bundled/` = JS/CSS, `public/` копируется как есть).
+Сборка: `npm run build` (сначала `tsc --noEmit`) → `dist/` (`bundled/` = JS/CSS, `public/` копируется как есть).
 
 ## Деплой
 
@@ -25,7 +25,7 @@ npm run dev
 ./deploy.sh --install  # ещё npm install
 ```
 
-CI: push в `main` → GitHub Actions (`.github/workflows/deploy.yml`) по SSH запускает `./deploy.sh` на VPS. Secrets: `SSH_HOST`, `SSH_USER`, `SSH_PRIVATE_KEY`.
+CI: push в `main` → GitHub Actions (`.github/workflows/deploy.yml`) по SSH делает на VPS `git merge --ff-only` и `scripts/server-deploy.sh` (сборка в `dist.next` → атомарная подмена `dist`, предыдущая версия — `dist.prev`). Secrets: `SSH_HOST`, `SSH_PORT`, `SSH_USER`, `SSH_PRIVATE_KEY`, опц. `SSH_HOST_FINGERPRINT`.
 
 Полная карта доменов, портов, AASA/Universal Links и ограничений Caddy — **`docs/INFRASTRUCTURE.md`**.
 
@@ -39,7 +39,9 @@ CI: push в `main` → GitHub Actions (`.github/workflows/deploy.yml`) по SSH 
 | `assets/` | исходники медиа; в прод часть уходит в `dist/media` через `deploy.sh --media` |
 | `docs/` | инфраструктура и продуктовые брифы |
 | `animation/` | исходники интро/аниматика (Blender-скрипты, промпты, референс маскота) |
-| `deploy.sh` | выкладка на VPS |
+| `deploy.sh` | ручная выкладка с локальной машины (rsync) |
+| `scripts/server-deploy.sh` | сборка на VPS из CI |
+| `docs/SECURITY.md` | аудит безопасности, заголовки Caddy, TODO по серверу |
 
 Рендеры, mp4 из Magnific/Blender и курсовые **не** в git — они в `animation/**/output/` и игнорятся. Канон панды для интро: `animation/intro/refs/master_c.png`, сценарий `animation/intro/CLIMBA_INTRO_SCRIPT.md`, промпты `animation/intro/PROMPTS.md`.
 
