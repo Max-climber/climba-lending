@@ -58,316 +58,232 @@
       </div>
     </header>
 
-    <!-- hero: only video (slogan is baked into mp4; no HTML/CSS text overlay) -->
-    <section class="hero" aria-label="Главный экран">
-      <video
-        class="hero__video"
-        width="1280"
-        height="720"
-        data-hero-video
-        muted
-        loop
-        playsinline
-        webkit-playsinline
-        disablepictureinpicture
-        disableremoteplayback
-        preload="metadata"
-        poster="/media/hero-poster.webp"
-        tabindex="-1"
-        aria-hidden="true"
-      >
-        <source src="/media/main-video-background.mp4" type="video/mp4" />
-      </video>
-    </section>
-
     <main class="main">
-      <h1 class="sr-only">Climba — пролез, отметил, победил</h1>
-      <section class="container cards" aria-label="Возможности">
-        <div class="cards__grid">
-          <article class="card">
-            <h2 class="card__title">Заноси свои пролазы, используя 3Д КАРТУ скалодрома!</h2>
+      <!-- hero: only video (slogan is baked into mp4; no HTML/CSS text overlay) -->
+      <section class="hero" aria-label="Главный экран">
+        <video
+          class="hero__video"
+          width="1280"
+          height="720"
+          data-hero-video
+          muted
+          loop
+          playsinline
+          webkit-playsinline
+          disablepictureinpicture
+          disableremoteplayback
+          preload="metadata"
+          poster="/media/hero-poster.webp"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <source src="/media/main-video-background.mp4" type="video/mp4" />
+        </video>
+      </section>
 
-            <details class="cardDetails">
-              <summary class="cardDetails__summary">
-                <span class="cardDetails__more">Подробнее…</span>
-                <span class="cardDetails__collapse">
-                  <span class="sr-only">Свернуть описание</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M18 15l-6-6-6 6"
-                      stroke="currentColor"
-                      stroke-width="2.25"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </span>
-              </summary>
-              <div class="cardDetails__expanded">
-                <p class="cardDetails__text">
-                  С каждой новой накруткой сектора 3д карта обновляется. Выбирай нужные трассы и
-                  сразу заноси в логбук.
-                </p>
-              </div>
-            </details>
+      <section class="container intro">
+        <h1 class="sr-only">Climba — пролез, отметил, победил</h1>
+        <p class="intro__lead">
+          3D-карта скалодрома, логбук, лиги, квесты и аналитика тренировок —
+          <span class="intro__accent">в одном приложении.</span>
+        </p>
+        <ul class="intro__chips" aria-label="Что есть в приложении">
+          <li>3D-карта</li>
+          <li>Логбук</li>
+          <li>Лиги</li>
+          <li>Квесты</li>
+          <li>Аналитика</li>
+        </ul>
+      </section>
 
-            <picture>
-              <source srcset="/media/panda-3d-map.webp" type="image/webp" />
-              <img
-                class="cardPanda"
-                src="/media/panda-3d-map.png"
-                alt="3D карта скалодрома в приложении"
-                width="640"
-                height="640"
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
+      <section class="container features" aria-labelledby="features-title">
+        <h2 class="sectionTitle" id="features-title">Что умеет Climba</h2>
+
+        <div class="features__grid">
+          <article class="feature feature--wide feature--peach reveal">
+            <div class="feature__body">
+              <p class="feature__tag">3D-карта</p>
+              <h3 class="feature__title">Заноси свои пролазы, используя <span class="nowrap">3D-карту</span> скалодрома!</h3>
+              <p class="feature__text">
+                С каждой новой накруткой сектора 3D-карта обновляется. Выбирай нужные трассы и
+                сразу заноси в логбук.
+              </p>
+            </div>
+            <div class="feature__media feature__media--cover">
+              <picture>
+                <source srcset="/media/panda-3d-map.webp" type="image/webp" />
+                <img
+                  class="feature__img"
+                  src="/media/panda-3d-map.png"
+                  alt="3D карта скалодрома в приложении"
+                  width="640"
+                  height="640"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            </div>
           </article>
 
-          <article class="card">
-            <h2 class="card__title">Тренируйся регулярно, сохраняй интенсивность и поднимайся выше по лигам.</h2>
-
-            <details class="cardDetails">
-              <summary class="cardDetails__summary">
-                <span class="cardDetails__more">Подробнее…</span>
-                <span class="cardDetails__collapse">
-                  <span class="sr-only">Свернуть описание</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M18 15l-6-6-6 6"
-                      stroke="currentColor"
-                      stroke-width="2.25"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </span>
-              </summary>
-              <div class="cardDetails__expanded">
-                <p class="cardDetails__text">
-                  Лиги обновляются каждую неделю, поэтому важно не только набирать очки, но и
-                  сохранять ритм тренировок. Счётчик интенсивности показывает, сколько дней подряд ты
-                  продолжаешь свой путь, и помогает не выпадать из процесса, удерживаться в топе и
-                  двигаться в следующую лигу.
-                </p>
-              </div>
-            </details>
-
-            <picture>
-              <source srcset="/media/panda-streak2.4.webp" type="image/webp" />
-              <img
-                class="cardPanda"
-                src="/media/panda-streak2.4.png"
-                alt="Панда интенсивности"
-                width="537"
-                height="640"
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
+          <article class="feature feature--lilac reveal">
+            <div class="feature__body">
+              <p class="feature__tag">Лиги</p>
+              <h3 class="feature__title">Тренируйся регулярно, сохраняй интенсивность и поднимайся выше по лигам.</h3>
+              <p class="feature__text">
+                Лиги обновляются каждую неделю, поэтому важно не только набирать очки, но и
+                сохранять ритм тренировок. Счётчик интенсивности показывает, сколько дней подряд ты
+                продолжаешь свой путь, и помогает не выпадать из процесса, удерживаться в топе и
+                двигаться в следующую лигу.
+              </p>
+            </div>
+            <div class="feature__media feature__media--bottom">
+              <picture>
+                <source srcset="/media/panda-streak2.4.webp" type="image/webp" />
+                <img
+                  class="feature__img"
+                  src="/media/panda-streak2.4.png"
+                  alt="Панда интенсивности"
+                  width="537"
+                  height="640"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            </div>
           </article>
 
-          <article class="card">
-            <h2 class="card__title">Получай квесты от приложения, выполняй их и открывай новые точки роста.</h2>
-
-            <details class="cardDetails">
-              <summary class="cardDetails__summary">
-                <span class="cardDetails__more">Подробнее…</span>
-                <span class="cardDetails__collapse">
-                  <span class="sr-only">Свернуть описание</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M18 15l-6-6-6 6"
-                      stroke="currentColor"
-                      stroke-width="2.25"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </span>
-              </summary>
-              <div class="cardDetails__expanded">
-                <p class="cardDetails__text">
-                  Приложение автоматически предлагает квесты на основе твоей активности, чтобы
-                  тренировки оставались интересными и разнообразными. Они помогают ставить новые цели,
-                  замечать прогресс и сохранять мотивацию на пути вперёд.
-                </p>
-              </div>
-            </details>
-
-            <picture>
-              <source srcset="/media/panda-scanning.webp" type="image/webp" />
-              <img
-                class="cardPanda"
-                src="/media/panda-scanning.png"
-                alt="Панда со сканером"
-                width="537"
-                height="640"
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
+          <article class="feature feature--mint reveal">
+            <div class="feature__body">
+              <p class="feature__tag">Квесты</p>
+              <h3 class="feature__title">Получай квесты от приложения, выполняй их и открывай новые точки роста.</h3>
+              <p class="feature__text">
+                Приложение автоматически предлагает квесты на основе твоей активности, чтобы
+                тренировки оставались интересными и разнообразными. Они помогают ставить новые цели,
+                замечать прогресс и сохранять мотивацию на пути вперёд.
+              </p>
+            </div>
+            <div class="feature__media">
+              <picture>
+                <source srcset="/media/panda-scanning.webp" type="image/webp" />
+                <img
+                  class="feature__img"
+                  src="/media/panda-scanning.png"
+                  alt="Панда со сканером"
+                  width="537"
+                  height="640"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            </div>
           </article>
 
-          <article class="card">
-            <h2 class="card__title">Анализируй свои тренировки, чтобы стать сильнее</h2>
-
-            <details class="cardDetails">
-              <summary class="cardDetails__summary">
-                <span class="cardDetails__more">Подробнее…</span>
-                <span class="cardDetails__collapse">
-                  <span class="sr-only">Свернуть описание</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M18 15l-6-6-6 6"
-                      stroke="currentColor"
-                      stroke-width="2.25"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </span>
-              </summary>
-              <div class="cardDetails__expanded">
-                <p class="cardDetails__text">
-                  После каждой занесенной тренировки аналитика данных позволяет отследить прогресс и
-                  найти слабые стороны.
-                </p>
-              </div>
-            </details>
-
-            <picture>
-              <source srcset="/media/panda-analitics2.0.webp" type="image/webp" />
-              <img
-                class="cardPanda"
-                src="/media/panda-analitics2.0.png"
-                alt="Панда аналитики"
-                width="537"
-                height="640"
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
+          <article class="feature feature--wide feature--sand reveal">
+            <div class="feature__body">
+              <p class="feature__tag">Аналитика</p>
+              <h3 class="feature__title">Анализируй свои тренировки, чтобы стать сильнее</h3>
+              <p class="feature__text">
+                После каждой занесённой тренировки аналитика данных позволяет отследить прогресс и
+                найти слабые стороны.
+              </p>
+            </div>
+            <div class="feature__media">
+              <picture>
+                <source srcset="/media/panda-analitics2.0.webp" type="image/webp" />
+                <img
+                  class="feature__img"
+                  src="/media/panda-analitics2.0.png"
+                  alt="Панда аналитики"
+                  width="537"
+                  height="640"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            </div>
           </article>
         </div>
       </section>
 
-      <section class="container friends" aria-label="Друзья">
-        <h2 class="friends__title">Находи или приглашай друзей в climba, чтобы тренировки стали еще интереснее!</h2>
-        <picture>
-          <source srcset="/media/friends.webp" type="image/webp" />
-          <img
-            class="friends__img"
-            src="/media/friends.png"
-            alt="Приложение Climba на iPhone"
-            width="480"
-            height="973"
-            loading="lazy"
-            decoding="async"
-          />
-        </picture>
+      <section class="container cta" aria-labelledby="cta-title">
+        <div class="cta__panel reveal">
+          <div class="cta__body">
+            <p class="feature__tag cta__tag">Друзья</p>
+            <h2 class="cta__title" id="cta-title">
+              Находи или приглашай друзей в Climba, чтобы тренировки стали ещё интереснее!
+            </h2>
 
-        <div class="friends__buttons">
-          <a
-            class="downloadBtn friendsBtn"
-            data-ios
-            href="https://apps.apple.com/ru/app/climba/id6763004800"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Скачать iOS
-          </a>
-          <a
-            class="downloadBtn friendsBtn"
-            data-android
-            href="https://play.google.com/store/apps/details?id=com.redizit.climba"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Скачать Android
-          </a>
-        </div>
-      </section>
-
-      <footer class="container footer">
-        <div class="footer__row">
-          <div class="footer__left">
-            <picture>
-              <source srcset="/media/climba-logo.webp" type="image/webp" />
-              <img class="footer__logo" src="/media/climba-logo.png" alt="Climba" width="611" height="197" decoding="async" />
-            </picture>
-          </div>
-
-          <div class="footer__right">
-            <div class="footer__socialRow">
-              <a class="footer__tg" href="https://t.me/climba1" target="_blank" rel="noopener noreferrer">
-                <span class="footer__tgText">Присоединяйтесь к нам в Telegram</span>
+            <div class="cta__buttons">
+              <a
+                class="downloadBtn downloadBtn--lg"
+                data-ios
+                href="https://apps.apple.com/ru/app/climba/id6763004800"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Скачать iOS
               </a>
-              <a class="footer__tgIcon" href="https://t.me/climba1" target="_blank" rel="noopener noreferrer" aria-label="Telegram @climba1">
-                <svg
-                  class="footer__socialIcon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="11"
-                    fill="white"
-                    stroke="rgba(0,0,0,0.1)"
-                    stroke-width="0.5"
-                  />
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.13-.31-1.09-.66.02-.18.27-.37.74-.56 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"
-                    fill="#0088cc"
-                  />
-                </svg>
+              <a
+                class="downloadBtn downloadBtn--lg"
+                data-android
+                href="https://play.google.com/store/apps/details?id=com.redizit.climba"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Скачать Android
               </a>
             </div>
+          </div>
 
-            <a class="footer__email" href="mailto:support@climba.ru">support@climba.ru</a>
-            <a class="footer__privacy" href="/delete-account">Удаление аккаунта</a>
-            <a class="footer__privacy" href="/eula.ru">Условия использования</a>
-            <a class="footer__privacy" href="/eula">Terms of Use (EULA)</a>
-            <a class="footer__privacy" href="/privacy.ru">Политика конфиденциальности</a>
-            <a class="footer__privacy" href="/privacy">Privacy Policy</a>
+          <div class="cta__media">
+            <picture>
+              <source srcset="/media/friends.webp" type="image/webp" />
+              <img
+                class="cta__phone"
+                src="/media/friends.png"
+                alt="Приложение Climba на iPhone"
+                width="480"
+                height="973"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </div>
         </div>
-
-        <p class="footer__copy">© Climba, 2026. Все права защищены.</p>
-      </footer>
+      </section>
     </main>
+
+    <footer class="container footer">
+      <div class="footer__top">
+        <picture>
+          <source srcset="/media/climba-logo.webp" type="image/webp" />
+          <img class="footer__logo" src="/media/climba-logo.png" alt="Climba" width="611" height="197" loading="lazy" decoding="async" />
+        </picture>
+
+        <a class="footer__tg" href="https://t.me/climba1" target="_blank" rel="noopener noreferrer">
+          <svg class="footer__tgIcon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="11" fill="white" />
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.13-.31-1.09-.66.02-.18.27-.37.74-.56 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"
+              fill="#0088cc"
+            />
+          </svg>
+          <span>Присоединяйтесь к нам в Telegram</span>
+        </a>
+      </div>
+
+      <nav class="footer__links" aria-label="Документы и контакты">
+        <a class="footer__link" href="mailto:support@climba.ru">support@climba.ru</a>
+        <a class="footer__link" href="/delete-account">Удаление аккаунта</a>
+        <a class="footer__link" href="/eula.ru">Условия использования</a>
+        <a class="footer__link" href="/eula">Terms of Use (EULA)</a>
+        <a class="footer__link" href="/privacy.ru">Политика конфиденциальности</a>
+        <a class="footer__link" href="/privacy">Privacy Policy</a>
+      </nav>
+
+      <p class="footer__copy">© Climba, 2026. Все права защищены.</p>
+    </footer>
+
     <script type="module" src="/src/main.ts"></script>
     <noscript><img src="https://mc.yandex.ru/watch/111839110" width="1" height="1" alt="" hidden /></noscript>
   </body>
